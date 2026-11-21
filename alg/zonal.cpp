@@ -954,10 +954,6 @@ class GDALZonalStatsImpl
         {
             feature.SetField(iField, stats.weighted_variance());
         }
-        if (auto iField = GetFieldIndex(iBand, WEIGHTED_SUM); iField != -1)
-        {
-            feature.SetField(iField, stats.weighted_sum());
-        }
         if (auto iField = GetFieldIndex(iBand, WEIGHTS); iField != -1)
         {
             const auto &weights = stats.weights();
@@ -2214,7 +2210,7 @@ static CPLErr GDALZonalStats(GDALDataset &srcDataset, GDALDataset *poWeights,
  *          - values
  *          - variance
  *          - weighted_frac
- *          - mean
+ *          - weighted_mean
  *          - weighted_sum
  *          - weighted_stdev
  *          - weighted_variance
